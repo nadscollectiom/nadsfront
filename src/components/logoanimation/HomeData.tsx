@@ -40,23 +40,8 @@ const HomeData: React.FC = () => {
     const fetchBanners = async (): Promise<void> => {
       try {
         setLoading(true);
-        
-        // Fetch hero banner (position 1)
-        // const heroResponse = await fetch(`http://localhost:8000/api/banner/5`);
-        // const heroData: BannerApiResponse = await heroResponse.json();
-        
-        // if (heroData.success) {
-        //   setHeroBanner({
-        //     id: 1,
-        //     position: heroData.data.position,
-        //     image: heroData.data.image_url,
-        //     title: 'CRAFTED Elegance',
-        //     description: 'Where timeless sophistication meets contemporary design. Discover pieces that define your unique style.'
-        //   });
-        // }
-
         const bannerPromises = [2, 3, 4].map(async (position): Promise<Banner | null> => {
-          const response = await fetch(`http://localhost:8000/api/banner/${position}`);
+          const response = await fetch(`http://nadscollection.store/app/api/banner/${position}`);
           const data: BannerApiResponse = await response.json();
           
           if (data.success) {
@@ -75,7 +60,7 @@ const HomeData: React.FC = () => {
         const validBanners = bannerResults.filter((banner): banner is Banner => banner !== null);
         setBanners(validBanners);
 
-        const featuredResponse = await fetch(`http://localhost:8000/api/banner/6`);
+        const featuredResponse = await fetch(`http://nadscollection.store/app/api/banner/6`);
         const featuredData: BannerApiResponse = await featuredResponse.json();
         
         if (featuredData.success) {

@@ -89,7 +89,7 @@ const Shop = () => {
         
         const fetchBackgroundBanner = async () => {
           try {
-            const bannerResponse = await fetch(`http://localhost:8000/api/banner/10`);
+            const bannerResponse = await fetch(`http://nadscollection.store/app/api/banner/10`);
             const bannerData: BannerApiResponse = await bannerResponse.json();
             
             if (bannerData.success && bannerData.data.image_url) {
@@ -101,7 +101,7 @@ const Shop = () => {
         };
 
         const fetchProducts = async () => {
-          const response = await fetch("http://localhost:8000/api/list");
+          const response = await fetch("http://nadscollection.store/app/api/list");
           
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -244,16 +244,9 @@ const Shop = () => {
                   <Link to={`/item/${product.id}`} state={{ product }}>
                     <div className="w-full overflow-hidden bg-gray-200 aspect-square">
                       <img
-                        src={
-                          product.image
-                            ? `http://localhost:8000/storage/${product.image}`
-                            : "https://via.placeholder.com/300"
-                        }
+                        src={`http://nadscollection.store/app/storage/${product.image}`}
                         alt={product.title}
                         className="h-full w-full object-cover object-center transition-opacity duration-300 group-hover:opacity-75"
-                        onError={(e) => {
-                          e.currentTarget.src = "https://via.placeholder.com/300";
-                        }}
                       />
                     </div>
                   </Link>

@@ -18,7 +18,7 @@ const LogoAnimation = () => {
       try {
         setIsLoading(true);
         
-        const response = await fetch('http://localhost:8000/api/banner/1', {
+        const response = await fetch('http://nadscollection.store/app/api/banner/1', {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
@@ -35,7 +35,7 @@ const LogoAnimation = () => {
         if (result.success && result.data && result.data.image_url) {
           setBannerImage(result.data.image_url);
         } else if (result.data && result.data.image_path) {
-          const imageUrl = `http://localhost:8000/storage/${result.data.image_path}`;
+          const imageUrl = `http://nadscollection.store/app/storage/${result.data.image_path}`;
           setBannerImage(imageUrl);
         } else {
           throw new Error('No image URL found in response');

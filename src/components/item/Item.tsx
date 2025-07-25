@@ -116,7 +116,7 @@ const Item = () => {
   const fetchSuggestedProducts = async () => {
     try {
       setSuggestionsLoading(true);
-      const response = await fetch("http://localhost:8000/api/list");
+      const response = await fetch("http://nadscollection.store/app/api/list");
       
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -209,7 +209,7 @@ const Item = () => {
       const fetchBanner = async () => {
         try {
           setLoading(true);
-          const response = await fetch(`http://localhost:8000/api/banner/${id}`);
+          const response = await fetch(`http://nadscollection.store/app/api/banner/${id}`);
           
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -368,16 +368,9 @@ const Item = () => {
                 <Link to={`/item/${suggestedProduct.id}`} state={{ product: suggestedProduct }}>
                   <div className="w-full overflow-hidden bg-gray-200 aspect-square">
                     <img
-                      src={
-                        suggestedProduct.image
-                          ? `http://localhost:8000/storage/${suggestedProduct.image}`
-                          : "https://via.placeholder.com/300"
-                      }
+                      src={`http://nadscollection.store/app/storage/${suggestedProduct.image}`}
                       alt={suggestedProduct.title}
                       className="h-full w-full object-cover object-center transition-opacity duration-300 group-hover:opacity-75"
-                      onError={(e) => {
-                        e.currentTarget.src = "https://via.placeholder.com/300";
-                      }}
                     />
                   </div>
                 </Link>
@@ -467,9 +460,6 @@ const Item = () => {
                     src={banner.image}
                     alt={banner.title} 
                     className="h-full object-contain"
-                    onError={(e) => {
-                      e.currentTarget.src = "https://via.placeholder.com/500";
-                    }}
                   />
                 </div>
               </div>
@@ -592,16 +582,9 @@ const Item = () => {
               <div className="lg:w-1/2">
                 <div className="product-visual h-120 md:h-[500px] flex items-center justify-center relative overflow-hidden">
                   <img 
-                    src={
-                      product.image 
-                        ? `http://localhost:8000/storage/${product.image}`
-                        : "https://via.placeholder.com/500"
-                    }
+                    src={`http://nadscollection.store/app/storage/${product.image}`}
                     alt={product.title} 
                     className="h-full object-contain"
-                    onError={(e) => {
-                      e.currentTarget.src = "https://via.placeholder.com/500";
-                    }}
                   />
                 </div>
               </div>

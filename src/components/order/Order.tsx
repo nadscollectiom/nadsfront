@@ -29,7 +29,7 @@ const Order = () => {
       return imageUrl;
     }
     
-    return `http://localhost:8000/storage/${imageUrl}`;
+    return `http://nadscollection.store/app/storage/${imageUrl}`;
   };
 
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -51,7 +51,7 @@ const Order = () => {
         orders: orders 
       };
 
-      const response = await fetch('http://localhost:8000/api/contact', {
+      const response = await fetch('http://nadscollection.store/app/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -127,9 +127,6 @@ const Order = () => {
                           src={getImageUrl(order.image)}
                           alt={order.title}
                           className="h-32 w-24 object-cover"
-                          onError={(e) => {
-                            (e.target as HTMLImageElement).src = 'https://via.placeholder.com/300';
-                          }}
                         />
                       </div>
                       <div className="flex-1 space-y-3">
@@ -316,7 +313,7 @@ const Order = () => {
                 name="contact" 
                 required 
                 disabled={isSubmitting}
-                placeholder="+1 (555) 123-4567"
+                placeholder="+92-320-7418826"
                 className="w-full px-0 py-3 border-0 border-b border-neutral-300 bg-transparent focus:border-neutral-900 focus:ring-0 transition-colors disabled:opacity-50" 
               />
             </div>
