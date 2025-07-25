@@ -2,6 +2,7 @@ import { createBrowserRouter, Route, createRoutesFromElements, RouterProvider } 
 import { Contacts, Item, Main, Order, Shop } from './components/route'
 import Layout from './Layout'
 import { CartProvider } from './context/CartContext'
+import NotFound from './NotFound'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -32,6 +33,7 @@ const router = createBrowserRouter(
           path='collection/:id' 
           element={<Item />} 
         />
+              <Route path="*" element={<NotFound />} />
     </Route>
   )
 )
